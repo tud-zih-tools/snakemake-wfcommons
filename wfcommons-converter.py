@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# SPDX-FileCopyrightText: 2025 Technische Universität Dresden, Germany <tu-dresden.de/zih>
+# SPDX-License-Identifier: BSD-3-Clause
+
 import base64, json, io, sys
 from pathlib import Path
 from collections import defaultdict
