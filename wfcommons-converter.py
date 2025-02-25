@@ -18,7 +18,7 @@ class makespan:
         self.end = max(end, self.end)
 
 class SnakemakeToWfFormat:
-    def __init__(self):
+    def __init__(self, output_json=None):
         self.metadata_dir = Path("./.snakemake/metadata")
         self.span = makespan()
         self.categories = defaultdict(int)
@@ -46,7 +46,7 @@ class SnakemakeToWfFormat:
                     for i in input_files:
                         if(i.name == o.name):
                             wf.add_dependency(t.name, u.name)
-        wf.write_json("snakemake.json")
+        wf.write_json(output_json if output_json is not None else 'snakemake.json')
 
     def make_file(self, filename, link_type):
         link = common.FileLink(link_type)
@@ -80,5 +80,4 @@ class SnakemakeToWfFormat:
                            start_time = datetime.fromtimestamp(metadata['starttime']).isoformat())
 
 if __name__ == '__main__':
-    SnakemakeToWfFormat()
-    
+    SnakemakeToWfFormat(output_json=sys.argv[1] if len(sys.argv) == 2 else None)
