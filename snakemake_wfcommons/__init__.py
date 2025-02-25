@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 # SPDX-FileCopyrightText: 2025 Technische Universität Dresden, Germany <tu-dresden.de/zih>
 # SPDX-License-Identifier: BSD-3-Clause
 
@@ -78,6 +76,3 @@ class SnakemakeToWfFormat:
                            program = prg,
                            args = argv,
                            start_time = datetime.fromtimestamp(metadata['starttime']).isoformat())
-
-if __name__ == '__main__':
-    SnakemakeToWfFormat(output_json=sys.argv[1] if len(sys.argv) == 2 else None)
